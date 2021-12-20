@@ -2,6 +2,7 @@ import React, { memo, useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import parseDate from "../../util/date";
+import styles from './products.module.css';
 
 const Products = memo(({ product, onUsernameClick, Delete, cartService }) => {
   const history = useHistory();
@@ -54,7 +55,7 @@ const Products = memo(({ product, onUsernameClick, Delete, cartService }) => {
             ((like && <button onClick={onClicklike}>찜삭제</button>) || (
               <button onClick={onClicklike}>찜하기</button>
             )))}
-        <li className="product">
+        <li className={styles.products}>
           <section className="product-container">
             <div className="product-body">
               {UrlArray.map(url => {

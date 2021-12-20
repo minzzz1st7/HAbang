@@ -2,6 +2,13 @@ import React, { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { loginAction, logoutAction } from "../../modules/user";
+import styles from './header.module.css';
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
+import { useMediaQuery } from 'react-responsive'
+
+
 
 const Header = memo(({ onLogout, username, time }) => {
   const dispatch = useDispatch();
@@ -12,45 +19,44 @@ const Header = memo(({ onLogout, username, time }) => {
   const path = `/${username}`;
 
   return (
-    <header className="header">
-      <div className="logo">
-        <img src="./img/img.jpg" alt="Home Logo" className="logo-img" />
-        <h1>
-          <Link to="/">하방</Link>
-        </h1>
-
+    <header className={styles.header}>
+      <div className={styles.logo}>
+       <Link to="/"> <img src="/img/haimg1.jpeg" alt="Home Logo" className={styles.logoimg}/></Link>
+      
         {timeend < 300 && <> 곧 자동로그아웃됩니다.</>}
         {username && (
           <span className="logo-user">[{username}]님 환영합니다 </span>
         )}
       </div>
-      <Link to={path}>
-        <button>내정보</button>
-      </Link>
-      <Link to="/productRegister">
-        <button>상품등록하기</button>
-      </Link>
-      <Link to="/chatlist">
-        <button>내 채팅</button>
-      </Link>
-      {(username && (
-        <nav className="menu">
-          <button className="menu-item" onClick={onLogout}>
-            Logout
-          </button>
-        </nav>
-      )) || (
-        <>
-          <Link to="/login">
-            <button>로그인</button>
-          </Link>
-        </>
-      )}
-      <Link to="/cart">
-        <button>찜목록</button>
-      </Link>
+
+
+      <div className = {styles.navbar__menu}>
+        <ul className= {styles.navbar__menu}>
+          <li className={styles.navbar__menu__item} data-link="#home">
+          <Link to={path}>내정보</Link> </li> 
+
+          <li className={styles.navbar__menu__item} data-link="#login" >
+          <Link to="/login">로그인</Link></li>
+
+          <li className={styles.navbar__menu__item} data-link="#sell">
+          <Link to="/productRegister">상품등록하기</Link></li>
+
+          <li className={styles.navbar__menu__item} data-link="#chat">
+          <Link to="/chatlist">내 채팅</Link></li>
+
+          <li className={styles.navbar__menu__item}data-link="#like">
+          <Link to="/cart">찜목록</Link></li>
+      
+        </ul>
+      </div>
+          
+      <button class ="arrowup">
+        <FontAwesomeIcon icon={faArrowUp} />
+    </button>
+      
     </header>
   );
 });
 
 export default Header;
+

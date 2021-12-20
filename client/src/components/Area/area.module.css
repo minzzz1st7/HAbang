@@ -1,0 +1,12 @@
+
+
+.dropdowncontent {
+    padding: 0; 
+    min-width: 300;
+
+    
+    position: absolute;
+    top: 140px;
+    left: 470px;
+
+}

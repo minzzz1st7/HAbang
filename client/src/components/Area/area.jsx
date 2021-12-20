@@ -1,9 +1,10 @@
 import React from "react";
+import styles from './area.module.css';
 
 const Area = ({ onChange }) => {
   return (
     <>
-      <div class="dropdown-content" style={{ padding: 0, minWidth: 300 }}>
+      <div className={styles.dropdowncontent}>
         <select autofocus style={{ width: 300 }} onChange={onChange}>
           <optgroup label="지역을 선택하세요">
             <option value="지역">전체 지역 상품</option>
